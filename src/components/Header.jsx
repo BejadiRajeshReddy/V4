@@ -28,7 +28,7 @@ function Header() {
   const scrollToForm = () => {
     setIsOpen(false);
     
-    // Use setTimeout to ensure the navigation completes before scrolling
+
     setTimeout(() => {
       const formElement = document.querySelector("#apply");
       if (formElement) {
