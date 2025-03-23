@@ -37,11 +37,6 @@ function Header() {
     }, 100);
   };
 
-  const scrollToForm = () => {
-    document.querySelector("#apply").scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false);
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
