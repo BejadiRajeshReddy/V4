@@ -37,10 +37,10 @@ function Header() {
     }, 100);
   };
 
-  // const scrollToForm = () => {
-  //   document.querySelector("#apply").scrollIntoView({ behavior: "smooth" });
-  //   setIsOpen(false);
-  // };
+  const scrollToForm = () => {
+    document.querySelector("#apply").scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false);
+  };
 
   return (
     <header
