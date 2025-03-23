@@ -1,10 +1,19 @@
-import "../App.css";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
+  const location = useLocation();
+  const isAboutPage = location.pathname === '/about';
+  
+  const sectionClasses = isAboutPage 
+    ? "min-h-screen bg-gray-100/95 flex flex-col sm:px-[10rem] justify-center items-center py-16" 
+    : "py-16 bg-gray-100/95 flex flex-col sm:px-[10rem]";
+
   return (
-    <section className="about h-screen flex justify-center">
-      <h2 className="heading">About Us</h2>
-      <p>
+    <section className={sectionClasses}>
+      <h2 className="font-[Fraunces] text-[#535bf2] text-center text-5xl font-thin leading-[1.1] mb-8">
+        About Us
+      </h2>
+      <p className="text-gray-700 px-12 text-md sm:px-0 text-justify sm:text-xl font-medium  leading-8">
         TechSpira is a leading technology company focused on innovative
         solutions in software development, machine learning, and data analytics.
         We&apos;ve helped countless interns grow into successful tech

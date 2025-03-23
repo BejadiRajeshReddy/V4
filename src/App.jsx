@@ -1,13 +1,16 @@
 import "./App.css";
 import { useState, useRef } from "react";
 import Img from "../src/assets/image.js";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Contact from "./components/contact.jsx";
 import About from "./components/About.jsx";
-import Domain from "./components/Domain.jsx";
 import PropTypes from "prop-types";
 import Detail from "./components/Detail.jsx";
+import Domain from "./components/Domain.jsx";
+import Hero from "./components/Hero.jsx";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function Main({
   domains,
@@ -20,81 +23,38 @@ function Main({
 }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     setIsSubmitting(true); // Start loading
   };
 
-  const navigate = useNavigate();
-
-  const handleCardClick = (domain) => {
-    const domainMap = {
-      "Full-Stack Development": "full-stack",
-      "Frontend Development": "frontend",
-      "Backend Development": "backend",
-      "Software Development": "software",
-      "Cloud Computing": "cloud",
-      "UI/UX Design": "ui-ux",
-      "DevOps & Automation": "devops",
-      "Networking & IT Support": "network",
-      "Database Management & SQL": "database",
-    };
-
-    const formattedName = domainMap[domain.name];
-    navigate(`/domains/${formattedName}`);
-  };
+  const location = useLocation();
+  
+  // Handle hash navigation when route changes
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <div>
-      <div className="hero">
-        <span className="tag-label animate-bounce">WELCOME TO TECHSPIRA</span>
-        <h1>
-          We help interns to work <br />
-          their way to the stars
-        </h1>
-        <p>Join TechSpira and launch your career in technology</p>
-        <button className="btn" id="about">
-          <a href="#apply">Start Your Journey →</a>
-        </button>
+      <div>
+        <Hero />
       </div>
-      <section className="about">
-        <h2 className="heading">About Us</h2>
-        <p>
-          TechSpira is a leading technology company focused on innovative
-          solutions in software development, machine learning, and data
-          analytics. We&apos;ve helped countless interns grow into successful
-          tech professionals. At TechSpira, we believe in nurturing future
-          talent. Our internship programs are designed to provide hands-on
-          experience, bridging academic learning with real-world challenges.
-          Under the leadership of our visionary directors, we strive to create
-          an environment where creativity meets technology, empowering both
-          organizations and aspiring professionals to excel. With a robust
-          foundation, a team of 50-100 dedicated professionals, and an
-          unwavering commitment to quality, TechSpira Technologies is not just a
-          company—it&apos;s a launchpad for technological innovation and
-          professional growth.
-        </p>
+      <section>
+        <About />
       </section>
 
-      <main id="domain">
-        <h1>Domains</h1>
-        <div className="carousel-container">
-          <div className="carousel">
-            <div className="domain-grid">
-              {domains.map((domain, index) => (
-                <div
-                  key={`${domain.name}-${index}`}
-                  className="card"
-                  onClick={() => handleCardClick(domain)} // Handle card click
-                >
-                  <img src={domain.image} alt={domain.name} />
-                  <h3>{domain.name}</h3>
-                  <p>{domain.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </main>
+      <section id="domain">
+        <Domain domains={domains} />
+      </section>
 
       <div className="form-container">
         <div id="apply" className="form-card">
@@ -335,7 +295,7 @@ function App() {
         />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/domains/:domainName" element={<Detail />} />
+        <Route path="/domains/:domain" element={<Detail />} />
         <Route path="/domains" element={<Domain domains={domains} />} />
       </Routes>
     </>

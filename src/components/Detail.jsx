@@ -1,10 +1,19 @@
-import { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const [selectedDomain, setSelectedDomain] = useState("full-stack");
-  // const { domain } = useParams(); // Get domain from URL
-  // const selectedDomain = domain;
+  const { domain } = useParams();
+
+  useEffect(() => {
+    if (domain) {
+      setSelectedDomain(domain);
+    }
+  }, [domain]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const domainInfo = {
     "full-stack": {
@@ -42,7 +51,7 @@ const Detail = () => {
       ],
       duration: "3-6 months",
     },
-    frontend: {
+    "frontend": {
       title: "Frontend Development",
       description: "Create visually stunning and user-friendly interfaces",
       detailedInfo:
@@ -77,7 +86,7 @@ const Detail = () => {
       ],
       duration: "3 months",
     },
-    backend: {
+    "backend": {
       title: "Backend Development",
       description: "Build the server-side and APIs that power applications",
       detailedInfo:
@@ -112,7 +121,7 @@ const Detail = () => {
       ],
       duration: "3-4 months",
     },
-    software: {
+    "software": {
       title: "Software Development",
       description: "Create desktop and mobile applications",
       detailedInfo:
@@ -139,7 +148,7 @@ const Detail = () => {
       ],
       duration: "4-6 months",
     },
-    cloud: {
+    "cloud": {
       title: "Cloud Computing",
       description: "Deploy and manage applications in the cloud",
       detailedInfo:
@@ -209,7 +218,7 @@ const Detail = () => {
       ],
       duration: "3 months",
     },
-    devops: {
+    "devops": {
       title: "DevOps & Automation",
       description: "Streamline development processes and deployment",
       detailedInfo:
@@ -244,7 +253,7 @@ const Detail = () => {
       ],
       duration: "3-5 months",
     },
-    network: {
+    "network": {
       title: "Networking & IT Support",
       description:
         "Manage network infrastructure and provide technical support",
@@ -280,7 +289,7 @@ const Detail = () => {
       ],
       duration: "2-4 months",
     },
-    database: {
+    "database": {
       title: "Database Management & SQL",
       description: "Design and optimize databases for applications",
       detailedInfo:
@@ -316,13 +325,6 @@ const Detail = () => {
       duration: "2-4 months",
     },
   };
-
-  if (!selectedDomain) {
-    return <h2 className="text-center text-red-500">Domain Not Found</h2>;
-  }
-  // if (!domainInfo[selectedDomain]) {
-  //   return <h2 className="text-center text-red-500">Domain Not Found</h2>;
-  // }
 
   return (
     <div className="min-h-screen bg-custom py-8 px-4 pt-20">

@@ -89,15 +89,17 @@ const Contact = () => {
   // ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-100/95">
       {/* Main Content */}
-      <main className=" py-12 max-w-7xl mx-auto px-4">
+      <main className="font-[Fraunces] py-12 max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="pt-16 text-center mb-16">
           <div className="mb-4">
             <Smile className="w-8 h-8 mx-auto" />
           </div>
-          <h1 className="text-4xl font-bold mb-4">Contact our friendly team</h1>
+          <h1 className="text-4xl font-medium  text-[#646cff] mb-4">
+            Contact our friendly team
+          </h1>
           <p className="text-gray-600">Let us know how we can help.</p>
         </div>
 
@@ -106,7 +108,7 @@ const Contact = () => {
           {contactMethods.map((method, index) => (
             <div
               key={index}
-              className="text-center flex flex-col items-center border rounded-lg p-6 bg-white shadow-sm"
+              className="text-center flex flex-col items-center rounded-lg p-6 bg-white shadow-sm"
             >
               <div className="mb-4 text-2xl">{method.icon}</div>
               <h3 className="font-semibold mb-1">{method.title}</h3>
