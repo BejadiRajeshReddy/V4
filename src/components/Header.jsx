@@ -44,7 +44,6 @@ function Header() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
             className="h-10 w-36 xs:h-12 xs:w-32 sm:h-10 sm:w-36 md:h-12 md:w-40 lg:h-14 lg:w-48 transition-all duration-300"
