@@ -52,7 +52,7 @@ function Header() {
           />
         </Link>
 
-        {/* Desktop Menu */}
+  
         <ul className="hidden md:flex gap-x-4 lg:gap-x-8">
           {["About", "Domains", "Contact"].map((item) => (
             <li key={item} className="relative">
@@ -109,7 +109,6 @@ function Header() {
         <Link to="/#apply" className="w-full px-8 py-2">
           <button
             className="bg-[#646cff] rounded-lg px-4 py-2 text-white text-sm font-medium transition-colors duration-300 hover:bg-red-500 w-full"
-            // onClick={scrollToForm}
           >
             Apply
           </button>
