@@ -6,20 +6,22 @@ const Domain = ({ domains }) => {
   const navigate = useNavigate();
 
   const handleCardClick = (domain) => {
-    const domainMap = {
-      "Full-Stack Development": "full-stack",
-      "Frontend Development": "frontend",
-      "Backend Development": "backend",
-      "Software Development": "software",
-      "Cloud Computing": "cloud",
-      "UI/UX Design": "ui-ux",
-      "DevOps & Automation": "devops",
-      "Networking & IT Support": "network",
-      "Database Management & SQL": "database",
-    };
+    // const domainMap = {
+    //   "Full-Stack Development": "full-stack",
+    //   "Frontend Development": "frontend",
+    //   "Backend Development": "backend",
+    //   "Software Development": "software",
+    //   "Cloud Computing": "cloud",
+    //   "UI/UX Design": "ui-ux",
+    //   "DevOps & Automation": "devops",
+    //   "Networking & IT Support": "network",
+    //   "Database Management & SQL": "database",
+    // };
 
-    const formattedName = domainMap[domain.name];
-    navigate(`/domains/${formattedName}`);
+    // const formattedName = domainMap[domain.name];
+    // navigate(`/domains/${formattedName}`);
+    // console.log(domain)
+    navigate(`/domains/${domain.route}`);
   };
 
   return (
@@ -31,17 +33,17 @@ const Domain = ({ domains }) => {
         <div className="flex flex-wrap justify-center gap-8">
           {domains.map((domain, index) => (
             <div
-              key={`${domain.name}-${index}`}
+              key={`${domain.title}-${index}`}
               className="w-80 h-96 p-6 rounded-xl shadow-lg transition-transform duration-300 ease-in-out flex flex-col items-center bg-[#f7f4e3] border border-red-400 cursor-pointer hover:scale-105 hover:shadow-2xl"
               onClick={() => handleCardClick(domain)}
             >
               <img
                 src={domain.image}
-                alt={domain.name}
+                alt={domain.title}
                 className="w-full h-40 object-cover rounded-lg mb-4"
               />
               <h3 className="text-lg font-medium text-sky-600 mb-2 font-[Fraunces]">
-                {domain.name}
+                {domain.title}
               </h3>
               <p className="text-gray-700 text-center text-md">
                 {domain.description}
