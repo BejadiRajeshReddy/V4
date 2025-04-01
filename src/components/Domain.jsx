@@ -20,7 +20,6 @@ const Domain = ({ domains }) => {
 
     // const formattedName = domainMap[domain.name];
     // navigate(`/domains/${formattedName}`);
-    // console.log(domain)
     navigate(`/domains/${domain.route}`);
   };
  
