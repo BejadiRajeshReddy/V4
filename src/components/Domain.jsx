@@ -23,7 +23,7 @@ const Domain = ({ domains }) => {
     // console.log(domain)
     navigate(`/domains/${domain.route}`);
   };
-
+ 
   return (
     <main id="domain" className="px-4 py-12 bg-gray-100/95 ">
       <h1 className="text-5xl font-normal text-center my-14 text-[#535bf2] font-[Fraunces]">

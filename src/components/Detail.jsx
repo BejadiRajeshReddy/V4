@@ -454,12 +454,11 @@
 
 
 import { useParams } from "react-router-dom";
-
 import PropTypes from 'prop-types';
 
 const Detail = ({ domains }) => {
-  const { domain } = useParams(); // Get domain from URL params
-  const selectedDomain = domains.find((d) => d.route === domain); // Find matching domain
+  const { domain } = useParams();
+  const selectedDomain = domains.find((d) => d.route === domain);
 
   if (!selectedDomain) {
     return (
@@ -474,13 +473,11 @@ const Detail = ({ domains }) => {
       <div className="max-w-6xl mx-auto">
         {/* Selected Domain Info */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          {/* Header */}
           <div className="bg-indigo-600 p-6">
             <h2 className="text-2xl font-bold text-white">{selectedDomain.title}</h2>
             <p className="text-indigo-100 mt-2">{selectedDomain.description}</p>
           </div>
 
-          {/* Content */}
           <div className="p-6">
             <div className="prose max-w-none mb-6">
               <p className="text-gray-700">{selectedDomain.detailedInfo}</p>
@@ -528,7 +525,6 @@ const Detail = ({ domains }) => {
               </div>
             </div>
 
-            {/* Internship Info */}
             <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
               <h3 className="text-lg font-semibold text-indigo-800 mb-2">Internship Opportunity</h3>
               <p className="text-indigo-700">
